@@ -21,12 +21,9 @@ def startConversation():
 	convData =  ConvData(gcmToken, requestId, serviceId)
 	ret = ""
 	if assignPerson(convData):
-		ret = "{\"requestId\":" + "\"" + requestId + "\"" + "}"
+		return "{\"requestId\":" + "\"" + requestId + "\"" + "}"
 	else:
-		ret = "{\"could not assign a person\"}"
-	print ret
-	return ret
-
+		return "{\"could not assign a person\"}", 500
 
 def assignPerson(convData):
 	dataList = serviceMap[str(convData.serviceId)]
