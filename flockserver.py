@@ -87,7 +87,7 @@ def flockToUs():
 	return "OK"
 
 def getFlockResponse(message):
-	postData = "{\"text\" : " + "\"" + message + "\"}"
+	postData = "{\"text\" : " + "\"" + messagePrefix + message + "\"}"
 	print postData
 	return postData
 	# resp = flask.Response(postData)
