@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import *
 import json
 import urllib2
 from random import randint
@@ -73,15 +73,27 @@ def flockToUs():
 	if text.startswith("#register"):
 		arr = text.split()
 		createNewFlockPerson(arr[1], token, arr[2])
-		return "OK"
+		return getFlockResponse("Successfully registered")
+	elif text.startswith("#unregister"):
+		availMap[token] = False
+		return getFlockResponse("Successfully unregistered")
 
 	convData = tokenToConvData[token]
-	if text.startswith("#stop"):
+	if text.startswith("#end"):
 		endConversation(convData)
 	else:
 		sendToGcm(text, convData)
 
 	return "OK"
+
+def getFlockResponse(message):
+	postData = "{\"text\" : " + "\"" + message + "\"}"
+	print postData
+	return postData
+	# resp = flask.Response(postData)
+	# print ddd
+	# resp.headers["Content-Type"] = "application/json"
+	# return resp
 
 @app.route('/appToServer',methods=['POST'])
 def appToUs():
@@ -102,6 +114,11 @@ def endChat():
 	convData = requestIdToConvData[requestId]
 	endConversation(convData)
 	return "OK"
+
+@app.after_request
+def apply_headers(response):
+	response.headers["Content-Type"] = "application/json"
+	return response
 
 def sendToFlock(message, convData):
 	data = {
