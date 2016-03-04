@@ -42,6 +42,8 @@ def assignPerson(convData):
 	return False
 
 def endConversation(convData):
+	sendToGcm("Chat Ended", convData)
+	sendToFlock("Chat Ended", convData)
 	availMap[convData.assignedPerson.flockToken] = True
 	requestIdToConvData.pop(convData.requestId, None)
 	tokenToConvData.pop(convData.assignedPerson.flockToken, None)
@@ -72,7 +74,6 @@ def flockToUs():
 
 	convData = tokenToConvData[token]
 	if text.startswith("#stop"):
-		sendToGcm("Chat Ended", convData)
 		endConversation(convData)
 	else:
 		sendToGcm(text, convData)
