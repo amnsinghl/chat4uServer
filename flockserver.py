@@ -79,7 +79,7 @@ def flockToUs():
 		return getFlockResponse("Successfully unregistered")
 
 	convData = tokenToConvData[token]
-	if text.startswith("#end"):
+	if text.startswith("#end") or text.startswith("#stop"):
 		endConversation(convData)
 	else:
 		sendToGcm(text, convData)
@@ -90,10 +90,6 @@ def getFlockResponse(message):
 	postData = "{\"text\" : " + "\"" + messagePrefix + message + "\"}"
 	print postData
 	return postData
-	# resp = flask.Response(postData)
-	# print ddd
-	# resp.headers["Content-Type"] = "application/json"
-	# return resp
 
 @app.route('/appToServer',methods=['POST'])
 def appToUs():
