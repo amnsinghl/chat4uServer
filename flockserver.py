@@ -53,12 +53,18 @@ def getServices():
 		services = myfile.read()
 		return services
 
+messagePrefix = "#chat4u: "
+
 @app.route('/flockToServer',methods=['POST'])
 def flockToUs():
 	data = json.loads(request.data)
 	print data
 	token = request.args.get('token')
 	text = data['text']
+	if text.startswith(messagePrefix):
+		print "ignore message"
+		return "duplicate message"
+
 	if text.startswith("#register"):
 		arr = text.split()
 		createNewFlockPerson(arr[1], token, arr[2])
@@ -95,7 +101,7 @@ def endChat():
 
 def sendToFlock(message, convData):
 	data = {
-		"text": message
+		"text": messagePrefix + message
 	}
 
 	req = urllib2.Request(convData.assignedPerson.webhookUrl)
