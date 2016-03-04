@@ -140,7 +140,7 @@ def populateMaps():
 	print str(serviceMap)
 
 if __name__ == '__main__':
-	populateMaps()
+	# populateMaps()
 	app.run(host= '0.0.0.0', port=8080)
 
 
