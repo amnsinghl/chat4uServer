@@ -21,7 +21,7 @@ def startConversation():
 	convData =  ConvData(gcmToken, requestId, serviceId)
 	ret = ""
 	if assignPerson(convData):
-		ret = "{\"requestId\":" + requestId + "}"
+		ret = "{\"requestId\":" + "\"" + requestId + "\"" + "}"
 	else:
 		ret = "{\"could not assign a person\"}"
 	print ret
