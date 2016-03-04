@@ -17,8 +17,14 @@ def startConversation():
 	print data
 	gcmToken = data['gcmToken']
 	serviceId = data['serviceId']
+	if 'requestId' in data:
+		print "yesss"
+		if data['requestId'] in requestIdToConvData:
+			print "dafasdfasdf"
+			return "{\"requestId\":" + "\"" + data['requestId'] + "\"" + "}"
+
 	requestId = str(randint(0,999999))
-	convData =  ConvData(gcmToken, requestId, serviceId)
+	convData = ConvData(gcmToken, requestId, serviceId)
 	ret = ""
 	if assignPerson(convData):
 		return "{\"requestId\":" + "\"" + requestId + "\"" + "}"
