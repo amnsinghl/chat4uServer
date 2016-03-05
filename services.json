@@ -1,6 +1,9 @@
 [
-	{"id": "1", "name" :"Dominos", "avatar" : "http://goo.gl/UtvTs6"},
-	{"id": "2", "name" :"Pizza Hut", "avatar": "https://goo.gl/S0Yv4r"},
-	{"id": "3", "name" :"Starbucks", "avatar" : "http://goo.gl/T4mKob"},
-	{"id": "4", "name" :"Cafe Coffee Day", "avatar" : "https://goo.gl/qOhJ4i"}
+        {"id": "1", "name" :"Dominos", "avatar" : "http://goo.gl/UtvTs6"},
+        {"id": "2", "name" :"Uber", "avatar" : "http://goo.gl/S4YiDy"},
+        {"id": "3", "name" :"Bookmyshow", "avatar" : "https://goo.gl/1AdLDN"},
+        {"id": "4", "name" :"ICICI", "avatar": "http://goo.gl/dgz0vl"},
+        {"id": "5", "name" :"Pizza Hut", "avatar": "https://goo.gl/S0Yv4r"},
+        {"id": "6", "name" :"Starbucks", "avatar" : "http://goo.gl/T4mKob"},
+        {"id": "7", "name" :"Cafe Coffee Day", "avatar" : "https://goo.gl/qOhJ4i"}
 ]
